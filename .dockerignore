@@ -1,0 +1,11 @@
+target/
+.git
+.gitignore
+.DS_Store
+*.md
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+node_modules/
