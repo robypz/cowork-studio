@@ -1,7 +1,5 @@
 package com.orinocolabs.cowork_studio.identity.domain;
 
-import java.util.Objects;
-
 /**
  * Wraps an already-hashed password. The domain never sees, stores, or
  * compares raw passwords directly — it only accepts values produced by a
