@@ -1,6 +1,6 @@
-package com.orinocolabs.cowork_studio.identity.domain;
+package com.orinocolabs.cowork_studio.identity.domain.exception;
 
-import com.orinocolabs.cowork_studio.shared.domain.DomainException;
+import com.orinocolabs.cowork_studio.shared.domain.exception.DomainException;
 
 public class InvalidRoleException extends DomainException {
 

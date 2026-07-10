@@ -1,13 +1,13 @@
 package com.orinocolabs.cowork_studio.identity.application.command;
 
-import com.orinocolabs.cowork_studio.identity.domain.Email;
-import com.orinocolabs.cowork_studio.identity.domain.EmailAlreadyRegisteredException;
-import com.orinocolabs.cowork_studio.identity.domain.HashedPassword;
-import com.orinocolabs.cowork_studio.identity.domain.PasswordHasher;
-import com.orinocolabs.cowork_studio.identity.domain.Role;
-import com.orinocolabs.cowork_studio.identity.domain.User;
-import com.orinocolabs.cowork_studio.identity.domain.UserId;
-import com.orinocolabs.cowork_studio.identity.domain.UserRepository;
+import com.orinocolabs.cowork_studio.identity.domain.exception.EmailAlreadyRegisteredException;
+import com.orinocolabs.cowork_studio.identity.domain.model.User;
+import com.orinocolabs.cowork_studio.identity.domain.port.PasswordHasher;
+import com.orinocolabs.cowork_studio.identity.domain.port.UserRepository;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.Email;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.HashedPassword;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.Role;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.UserId;
 
 /**
  * Orchestrates user registration. Deliberately a plain class — no

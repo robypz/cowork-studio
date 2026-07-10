@@ -1,7 +1,13 @@
-package com.orinocolabs.cowork_studio.identity.domain;
+package com.orinocolabs.cowork_studio.identity.domain.model;
 
 import java.time.Instant;
 import java.util.Objects;
+
+import com.orinocolabs.cowork_studio.identity.domain.exception.UserAlreadyDeactivatedException;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.Email;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.HashedPassword;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.Role;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.UserId;
 
 /**
  * Aggregate root of the identity bounded context. Plain Java — no JPA, no
@@ -31,7 +37,7 @@ public final class User {
     /**
      * Registers a brand-new user. Email uniqueness is a cross-aggregate
      * invariant — the aggregate has no way to query other users — so it must
-     * be checked by the application layer (via {@link UserRepository}) before
+     * be checked by the application layer (via {@code UserRepository}) before
      * calling this factory.
      */
     public static User register(Email email, HashedPassword password, Role role) {

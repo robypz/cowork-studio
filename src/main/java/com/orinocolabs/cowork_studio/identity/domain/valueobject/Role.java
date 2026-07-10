@@ -1,4 +1,6 @@
-package com.orinocolabs.cowork_studio.identity.domain;
+package com.orinocolabs.cowork_studio.identity.domain.valueobject;
+
+import com.orinocolabs.cowork_studio.identity.domain.exception.InvalidRoleException;
 
 /**
  * Roles recognized by the identity bounded context for this MVP.

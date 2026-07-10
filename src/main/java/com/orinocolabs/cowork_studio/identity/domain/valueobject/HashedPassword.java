@@ -1,9 +1,9 @@
-package com.orinocolabs.cowork_studio.identity.domain;
+package com.orinocolabs.cowork_studio.identity.domain.valueobject;
 
 /**
  * Wraps an already-hashed password. The domain never sees, stores, or
  * compares raw passwords directly — it only accepts values produced by a
- * {@link PasswordHasher} adapter, so the aggregate cannot accidentally end up
+ * {@code PasswordHasher} adapter, so the aggregate cannot accidentally end up
  * persisting plaintext.
  */
 public final class HashedPassword {
@@ -15,7 +15,7 @@ public final class HashedPassword {
     }
 
     /**
-     * Wraps a value that has already gone through {@link PasswordHasher#hash}.
+     * Wraps a value that has already gone through {@code PasswordHasher#hash}.
      * Not meant to be called with a raw/plaintext password.
      */
     public static HashedPassword ofHash(String hash) {

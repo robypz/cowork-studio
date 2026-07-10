@@ -1,7 +1,9 @@
-package com.orinocolabs.cowork_studio.identity.domain;
+package com.orinocolabs.cowork_studio.identity.domain.valueobject;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
+
+import com.orinocolabs.cowork_studio.identity.domain.exception.InvalidEmailException;
 
 /**
  * Value object enforcing the "an email must look like an email" invariant at

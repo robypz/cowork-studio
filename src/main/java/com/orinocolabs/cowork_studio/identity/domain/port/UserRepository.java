@@ -1,6 +1,10 @@
-package com.orinocolabs.cowork_studio.identity.domain;
+package com.orinocolabs.cowork_studio.identity.domain.port;
 
 import java.util.Optional;
+
+import com.orinocolabs.cowork_studio.identity.domain.model.User;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.Email;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.UserId;
 
 /**
  * Outbound port for User persistence. Implemented by a JPA adapter in

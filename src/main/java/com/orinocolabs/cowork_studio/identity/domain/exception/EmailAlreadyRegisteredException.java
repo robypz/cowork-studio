@@ -1,11 +1,12 @@
-package com.orinocolabs.cowork_studio.identity.domain;
+package com.orinocolabs.cowork_studio.identity.domain.exception;
 
-import com.orinocolabs.cowork_studio.shared.domain.DomainException;
+import com.orinocolabs.cowork_studio.identity.domain.valueobject.Email;
+import com.orinocolabs.cowork_studio.shared.domain.exception.DomainException;
 
 /**
  * Raised when an email uniqueness check fails. Uniqueness spans every
- * {@link User} in the repository, so this is enforced by the application
- * layer (via {@link UserRepository#existsByEmail}) rather than inside the
+ * {@code User} in the repository, so this is enforced by the application
+ * layer (via {@code UserRepository#existsByEmail}) rather than inside the
  * {@code User} aggregate itself — the aggregate has no way to see other
  * aggregates.
  */

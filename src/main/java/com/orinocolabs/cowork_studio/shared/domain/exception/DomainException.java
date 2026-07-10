@@ -1,4 +1,4 @@
-package com.orinocolabs.cowork_studio.shared.domain;
+package com.orinocolabs.cowork_studio.shared.domain.exception;
 
 /**
  * Base type for every business rule violation raised by the domain layer.
