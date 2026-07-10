@@ -1,4 +1,4 @@
-package com.orinocolabs.cowork_studio.identity.domain.model;
+package com.orinocolabs.cowork_studio.identity.domain.entity;
 
 import java.time.Instant;
 import java.util.Objects;

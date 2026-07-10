@@ -1,8 +1,8 @@
-package com.orinocolabs.cowork_studio.identity.domain.port;
+package com.orinocolabs.cowork_studio.identity.domain.repository;
 
 import java.util.Optional;
 
-import com.orinocolabs.cowork_studio.identity.domain.model.User;
+import com.orinocolabs.cowork_studio.identity.domain.entity.User;
 import com.orinocolabs.cowork_studio.identity.domain.valueobject.Email;
 import com.orinocolabs.cowork_studio.identity.domain.valueobject.UserId;
 

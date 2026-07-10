@@ -1,9 +1,9 @@
 package com.orinocolabs.cowork_studio.identity.application.command;
 
+import com.orinocolabs.cowork_studio.identity.domain.entity.User;
 import com.orinocolabs.cowork_studio.identity.domain.exception.EmailAlreadyRegisteredException;
-import com.orinocolabs.cowork_studio.identity.domain.model.User;
 import com.orinocolabs.cowork_studio.identity.domain.port.PasswordHasher;
-import com.orinocolabs.cowork_studio.identity.domain.port.UserRepository;
+import com.orinocolabs.cowork_studio.identity.domain.repository.UserRepository;
 import com.orinocolabs.cowork_studio.identity.domain.valueobject.Email;
 import com.orinocolabs.cowork_studio.identity.domain.valueobject.HashedPassword;
 import com.orinocolabs.cowork_studio.identity.domain.valueobject.Role;
