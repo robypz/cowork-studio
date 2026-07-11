@@ -24,7 +24,7 @@ public class UserProfileFinderAdapter implements UserProfileFinder {
 
     @Override
     public Optional<UserProfileView> findById(UUID userId) {
-        return jpaRepository.findById(userId).map(projection -> new UserProfileView(
+        return jpaRepository.findProjectedById(userId).map(projection -> new UserProfileView(
                 projection.getId(),
                 projection.getEmail(),
                 projection.getRole().name(),

@@ -13,8 +13,15 @@ import com.orinocolabs.cowork_studio.identity.infrastructure.out.persistence.wri
  * the one finder this query needs — no {@code save}/{@code delete}, since
  * this adapter must never write. It queries the same {@code UserJpaEntity}
  * mapping the write side uses, projected into {@link UserProfileProjection}.
+ *
+ * <p>Deliberately named {@code findProjectedById}, not {@code findById}:
+ * Spring Data JPA special-cases the literal name {@code findById} as an
+ * {@code EntityManager.find()} shortcut regardless of which base interface is
+ * extended, which returns the raw {@code UserJpaEntity} instead of going
+ * through the interface-projection query machinery — that mismatch blows up
+ * with a {@code ClassCastException} at runtime.
  */
 interface UserProfileJpaRepository extends Repository<UserJpaEntity, UUID> {
 
-    Optional<UserProfileProjection> findById(UUID id);
+    Optional<UserProfileProjection> findProjectedById(UUID id);
 }
