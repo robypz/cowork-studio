@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.orinocolabs.cowork_studio.identity.application.command.RegisterUserCommand;
-import com.orinocolabs.cowork_studio.identity.application.command.RegisterUserCommandHandler;
+import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommand;
+import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommandHandler;
 
 import jakarta.validation.Valid;
 

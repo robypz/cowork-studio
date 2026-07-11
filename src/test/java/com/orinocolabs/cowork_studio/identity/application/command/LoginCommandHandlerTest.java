@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import com.orinocolabs.cowork_studio.identity.application.command.login.LoginCommand;
+import com.orinocolabs.cowork_studio.identity.application.command.login.LoginCommandHandler;
+import com.orinocolabs.cowork_studio.identity.application.command.login.LoginResult;
+import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommand;
+import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommandHandler;
 import com.orinocolabs.cowork_studio.identity.domain.entity.User;
 import com.orinocolabs.cowork_studio.identity.domain.exception.InvalidCredentialsException;
 import com.orinocolabs.cowork_studio.identity.domain.exception.UserDeactivatedException;

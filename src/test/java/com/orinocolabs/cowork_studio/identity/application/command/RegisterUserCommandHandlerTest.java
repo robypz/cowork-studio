@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommand;
+import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommandHandler;
 import com.orinocolabs.cowork_studio.identity.domain.entity.User;
 import com.orinocolabs.cowork_studio.identity.domain.exception.EmailAlreadyRegisteredException;
 import com.orinocolabs.cowork_studio.identity.domain.exception.InvalidEmailException;

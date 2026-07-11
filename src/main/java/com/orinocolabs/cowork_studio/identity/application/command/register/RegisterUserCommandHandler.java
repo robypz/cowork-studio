@@ -1,4 +1,4 @@
-package com.orinocolabs.cowork_studio.identity.application.command;
+package com.orinocolabs.cowork_studio.identity.application.command.register;
 
 import com.orinocolabs.cowork_studio.identity.domain.entity.User;
 import com.orinocolabs.cowork_studio.identity.domain.exception.EmailAlreadyRegisteredException;

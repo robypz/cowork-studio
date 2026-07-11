@@ -1,4 +1,6 @@
-package com.orinocolabs.cowork_studio.identity.application.command;
+package com.orinocolabs.cowork_studio.identity.application.command.login;
+
+import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommand;
 
 /**
  * Input for login. Primitives, same reasoning as {@link RegisterUserCommand}:

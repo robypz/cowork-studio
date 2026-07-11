@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.orinocolabs.cowork_studio.identity.application.command.LoginCommand;
-import com.orinocolabs.cowork_studio.identity.application.command.LoginCommandHandler;
-import com.orinocolabs.cowork_studio.identity.application.command.LoginResult;
+import com.orinocolabs.cowork_studio.identity.application.command.login.LoginCommand;
+import com.orinocolabs.cowork_studio.identity.application.command.login.LoginCommandHandler;
+import com.orinocolabs.cowork_studio.identity.application.command.login.LoginResult;
 
 import jakarta.validation.Valid;
 
