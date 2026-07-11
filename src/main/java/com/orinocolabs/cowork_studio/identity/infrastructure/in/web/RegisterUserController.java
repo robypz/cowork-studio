@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.orinocolabs.cowork_studio.identity.application.command.RegisterUserCommand;
@@ -13,22 +12,24 @@ import com.orinocolabs.cowork_studio.identity.application.command.RegisterUserCo
 import jakarta.validation.Valid;
 
 /**
- * Inbound web adapter for the identity context. Talks only to the
- * application layer (commands/handlers) — never touches JPA, the domain
- * repository, or any other infrastructure adapter directly.
+ * Inbound web adapter for exactly one use case: user registration. Each
+ * command/query gets its own controller (no shared "UserController" with
+ * multiple endpoints) so a controller, its request/response DTOs, and the
+ * handler it calls all map 1:1. Talks only to the application layer — never
+ * touches JPA, the domain repository, or any other infrastructure adapter
+ * directly.
  */
 @RestController
-@RequestMapping("/api/users")
-public class UserController {
+public class RegisterUserController {
 
     private final RegisterUserCommandHandler registerUserCommandHandler;
 
-    public UserController(RegisterUserCommandHandler registerUserCommandHandler) {
+    public RegisterUserController(RegisterUserCommandHandler registerUserCommandHandler) {
         this.registerUserCommandHandler = registerUserCommandHandler;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<RegisterUserResponse> register(@Valid @RequestBody RegisterUserRequest request) {
+    @PostMapping("/api/users/register")
+    public ResponseEntity<RegisterUserResponse> handle(@Valid @RequestBody RegisterUserRequest request) {
         var userId = registerUserCommandHandler.handle(
                 new RegisterUserCommand(request.email(), request.password(), request.role())
         );

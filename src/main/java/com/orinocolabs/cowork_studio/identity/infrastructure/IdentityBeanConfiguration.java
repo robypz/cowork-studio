@@ -3,8 +3,10 @@ package com.orinocolabs.cowork_studio.identity.infrastructure;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.orinocolabs.cowork_studio.identity.application.command.LoginCommandHandler;
 import com.orinocolabs.cowork_studio.identity.application.command.RegisterUserCommandHandler;
 import com.orinocolabs.cowork_studio.identity.domain.port.PasswordHasher;
+import com.orinocolabs.cowork_studio.identity.domain.port.TokenIssuer;
 import com.orinocolabs.cowork_studio.identity.domain.repository.UserRepository;
 
 /**
@@ -21,5 +23,12 @@ public class IdentityBeanConfiguration {
     public RegisterUserCommandHandler registerUserCommandHandler(UserRepository userRepository,
                                                                    PasswordHasher passwordHasher) {
         return new RegisterUserCommandHandler(userRepository, passwordHasher);
+    }
+
+    @Bean
+    public LoginCommandHandler loginCommandHandler(UserRepository userRepository,
+                                                     PasswordHasher passwordHasher,
+                                                     TokenIssuer tokenIssuer) {
+        return new LoginCommandHandler(userRepository, passwordHasher, tokenIssuer);
     }
 }

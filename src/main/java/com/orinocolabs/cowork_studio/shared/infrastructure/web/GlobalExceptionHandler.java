@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.orinocolabs.cowork_studio.identity.domain.exception.EmailAlreadyRegisteredException;
+import com.orinocolabs.cowork_studio.identity.domain.exception.InvalidCredentialsException;
 import com.orinocolabs.cowork_studio.identity.domain.exception.UserAlreadyDeactivatedException;
+import com.orinocolabs.cowork_studio.identity.domain.exception.UserDeactivatedException;
 import com.orinocolabs.cowork_studio.shared.domain.exception.DomainException;
 
 /**
@@ -21,6 +23,16 @@ import com.orinocolabs.cowork_studio.shared.domain.exception.DomainException;
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ErrorResponse handleInvalidCredentials(DomainException ex) {
+        return ErrorResponse.builder(ex, HttpStatus.UNAUTHORIZED, ex.getMessage()).build();
+    }
+
+    @ExceptionHandler(UserDeactivatedException.class)
+    public ErrorResponse handleUserDeactivated(DomainException ex) {
+        return ErrorResponse.builder(ex, HttpStatus.FORBIDDEN, ex.getMessage()).build();
+    }
 
     @ExceptionHandler({
             EmailAlreadyRegisteredException.class,
