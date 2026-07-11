@@ -68,6 +68,15 @@ public final class User {
         this.password = Objects.requireNonNull(newPassword, "password must not be null");
     }
 
+    /**
+     * Changes the user's email. Uniqueness is a cross-aggregate invariant —
+     * same as in {@link #register} — so it must be checked by the
+     * application layer (via {@code UserRepository}) before calling this.
+     */
+    public void changeEmail(Email newEmail) {
+        this.email = Objects.requireNonNull(newEmail, "email must not be null");
+    }
+
     public UserId id() {
         return id;
     }

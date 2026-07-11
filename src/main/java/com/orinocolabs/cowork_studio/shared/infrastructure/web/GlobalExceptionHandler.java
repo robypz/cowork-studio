@@ -12,6 +12,7 @@ import com.orinocolabs.cowork_studio.identity.domain.exception.EmailAlreadyRegis
 import com.orinocolabs.cowork_studio.identity.domain.exception.InvalidCredentialsException;
 import com.orinocolabs.cowork_studio.identity.domain.exception.UserAlreadyDeactivatedException;
 import com.orinocolabs.cowork_studio.identity.domain.exception.UserDeactivatedException;
+import com.orinocolabs.cowork_studio.identity.domain.exception.UserNotFoundException;
 import com.orinocolabs.cowork_studio.shared.domain.exception.DomainException;
 
 /**
@@ -32,6 +33,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserDeactivatedException.class)
     public ErrorResponse handleUserDeactivated(DomainException ex) {
         return ErrorResponse.builder(ex, HttpStatus.FORBIDDEN, ex.getMessage()).build();
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ErrorResponse handleUserNotFound(DomainException ex) {
+        return ErrorResponse.builder(ex, HttpStatus.NOT_FOUND, ex.getMessage()).build();
     }
 
     @ExceptionHandler({

@@ -10,15 +10,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.http.HttpStatus;
 
 /**
- * Minimal security setup for this stage of the MVP: a stateless API, no CSRF
- * (no cookie-based sessions), and only the endpoints that don't need
- * authentication yet opened up explicitly. There is no JWT authentication
- * filter wired in yet — {@code /api/users/login} issues tokens, but nothing
- * currently validates them on the way in. That filter is the next piece to
- * add here once a protected endpoint needs it; the {@code anyRequest()} rule
- * below is where it plugs in.
+ * Minimal security setup for this MVP: a stateless API, no CSRF (no
+ * cookie-based sessions), a {@link JwtAuthenticationFilter} that resolves the
+ * caller from the {@code Authorization} header, and only the endpoints that
+ * don't need authentication opened up explicitly.
  */
 @Configuration
 @EnableWebSecurity
@@ -31,16 +31,27 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public JwtAuthenticationFilter jwtAuthenticationFilter(JwtProperties properties) {
+        return new JwtAuthenticationFilter(properties);
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter)
+            throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .httpBasic(basic -> basic.disable())
+                .formLogin(form -> form.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(exceptions -> exceptions
+                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/users/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
-                );
+                )
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }

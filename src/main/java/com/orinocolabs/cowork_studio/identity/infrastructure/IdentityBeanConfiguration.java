@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.orinocolabs.cowork_studio.identity.application.command.login.LoginCommandHandler;
 import com.orinocolabs.cowork_studio.identity.application.command.register.RegisterUserCommandHandler;
+import com.orinocolabs.cowork_studio.identity.application.command.updateprofile.UpdateUserProfileCommandHandler;
+import com.orinocolabs.cowork_studio.identity.application.query.profile.GetUserProfileQueryHandler;
+import com.orinocolabs.cowork_studio.identity.application.query.profile.UserProfileFinder;
 import com.orinocolabs.cowork_studio.identity.domain.port.PasswordHasher;
 import com.orinocolabs.cowork_studio.identity.domain.port.TokenIssuer;
 import com.orinocolabs.cowork_studio.identity.domain.repository.UserRepository;
@@ -30,5 +33,15 @@ public class IdentityBeanConfiguration {
                                                      PasswordHasher passwordHasher,
                                                      TokenIssuer tokenIssuer) {
         return new LoginCommandHandler(userRepository, passwordHasher, tokenIssuer);
+    }
+
+    @Bean
+    public UpdateUserProfileCommandHandler updateUserProfileCommandHandler(UserRepository userRepository) {
+        return new UpdateUserProfileCommandHandler(userRepository);
+    }
+
+    @Bean
+    public GetUserProfileQueryHandler getUserProfileQueryHandler(UserProfileFinder userProfileFinder) {
+        return new GetUserProfileQueryHandler(userProfileFinder);
     }
 }
